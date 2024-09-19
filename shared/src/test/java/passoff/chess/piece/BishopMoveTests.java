@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static passoff.chess.TestUtilities.validateMoves;
 
 public class BishopMoveTests {
-
+//TODO Correct move order
     @Test
     public void bishopMoveUntilEdge() {
         validateMoves("""
