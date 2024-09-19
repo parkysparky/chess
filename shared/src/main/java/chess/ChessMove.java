@@ -59,7 +59,7 @@ public class ChessMove {
     }
 
     @Override
-    public String toString() {//TODO make sure this is formatted nice
+    public String toString() {
 //        return "to " + endPosition + " promotion: " + promotionPiece;
         return startPosition + "-" +  endPosition;
     }

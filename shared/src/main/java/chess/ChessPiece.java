@@ -54,8 +54,27 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        PieceMovesCalculator kingMoves = new KingMovesCalculator();
-        return new ArrayList<>(); //TODO replace temporary filler to skip runtime error
+        Collection<ChessMove> moves = new ArrayList<>();
+        if(PieceType.KING == type){
+            PieceMovesCalculator kingMoves = new KingMovesCalculator();
+            moves = kingMoves.pieceMoves(board, myPosition);
+        } else if (PieceType.QUEEN == type) {
+            PieceMovesCalculator queenMoves = new QueenMovesCalculator();
+            moves = queenMoves.pieceMoves(board, myPosition);
+        } else if (PieceType.BISHOP == type) {
+            PieceMovesCalculator bishopMoves = new BishopMovesCalculator();
+            moves = bishopMoves.pieceMoves(board, myPosition);
+        } else if (PieceType.KNIGHT == type) {
+            PieceMovesCalculator knightMoves = new KnightMovesCalculator();
+            moves = knightMoves.pieceMoves(board, myPosition);
+        } else if (PieceType.ROOK == type) {
+            PieceMovesCalculator rookMoves = new RookMovesCalculator();
+            moves = rookMoves.pieceMoves(board, myPosition);
+        } else if (PieceType.PAWN == type) {
+            PieceMovesCalculator pawnMoves = new PawnMovesCalculator();
+            moves = pawnMoves.pieceMoves(board, myPosition);
+        }
+        return moves;
     }
 
     @Override
