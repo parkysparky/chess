@@ -38,8 +38,12 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
                 }
             }
             ChessPosition endPosition = new ChessPosition(j-1, i);
-            if(null == board.getPiece(endPosition)){ //normal move
-                moves.add(new ChessMove(position, endPosition, null));
+            if(null == board.getPiece(endPosition)){
+                if(1 == endPosition.getRow()){ //promotion move
+                    addPromotionMoves(position, endPosition, moves);
+                } else {
+                    moves.add(new ChessMove(position, endPosition, null));
+                }
             }
         }
 
