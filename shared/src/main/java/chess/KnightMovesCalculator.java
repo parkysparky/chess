@@ -5,10 +5,10 @@ import java.util.Collection;
 
 public class KnightMovesCalculator implements PieceMovesCalculator {
     @Override
-    public ArrayList<ChessMove> pieceMoves(ChessBoard board, ChessPosition position){
+    public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition position){
 //        System.out.println("KnightMovesCalculator running");
 
-        ArrayList<ChessMove> moves = new ArrayList<>();
+        Collection<ChessMove> moves = new ArrayList<>();
 
         return moves;
     }

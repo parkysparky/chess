@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static passoff.chess.TestUtilities.validateMoves;
 
 public class QueenMoveTests {
-//TODO correct move order
     @Test
     public void queenMoveUntilEdge() {
         validateMoves("""

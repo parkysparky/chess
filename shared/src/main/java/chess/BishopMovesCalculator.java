@@ -1,17 +1,17 @@
 package chess;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Collection;
 
 public class BishopMovesCalculator implements PieceMovesCalculator {
 
     @Override
-    public ArrayList<ChessMove> pieceMoves(ChessBoard board, ChessPosition position){
+    public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition position){
 //        System.out.println("BishopMovesCalculator running");
 
         ChessPiece piece = board.getPiece(position);
 
-        ArrayList<ChessMove> moves = new ArrayList<>();
+        Collection<ChessMove> moves = new HashSet<>();
         int j = position.getRow();;
         int i = position.getColumn();
         while(i < 8 && j < 8){ //UR direction
@@ -19,11 +19,11 @@ public class BishopMovesCalculator implements PieceMovesCalculator {
             ++j;
             ChessPosition endPosition = new ChessPosition(j, i);
             if(null == board.getPiece(endPosition)){
-                moves.add(new ChessMove(position, endPosition, piece.getPieceType()));
+                moves.add(new ChessMove(position, endPosition, null));
             } else if (piece.getTeamColor() == board.getPiece(endPosition).getTeamColor()) {
                 break;
             } else {
-                moves.add(new ChessMove(position, endPosition, piece.getPieceType()));
+                moves.add(new ChessMove(position, endPosition, null));
                 break;
             }
         }
@@ -34,11 +34,11 @@ public class BishopMovesCalculator implements PieceMovesCalculator {
             --j;
             ChessPosition endPosition = new ChessPosition(j, i);
             if(null == board.getPiece(endPosition)){
-                moves.add(new ChessMove(position, endPosition, piece.getPieceType()));
+                moves.add(new ChessMove(position, endPosition, null));
             } else if (piece.getTeamColor() == board.getPiece(endPosition).getTeamColor()) {
                 break;
             } else {
-                moves.add(new ChessMove(position, endPosition, piece.getPieceType()));
+                moves.add(new ChessMove(position, endPosition, null));
                 break;
             }
         }
@@ -49,11 +49,11 @@ public class BishopMovesCalculator implements PieceMovesCalculator {
             --j;
             ChessPosition endPosition = new ChessPosition(j, i);
             if(null == board.getPiece(endPosition)){
-                moves.add(new ChessMove(position, endPosition, piece.getPieceType()));
+                moves.add(new ChessMove(position, endPosition, null));
             } else if (piece.getTeamColor() == board.getPiece(endPosition).getTeamColor()) {
                 break;
             } else {
-                moves.add(new ChessMove(position, endPosition, piece.getPieceType()));
+                moves.add(new ChessMove(position, endPosition, null));
                 break;
             }
         }
@@ -64,11 +64,11 @@ public class BishopMovesCalculator implements PieceMovesCalculator {
             ++j;
             ChessPosition endPosition = new ChessPosition(j, i);
             if(null == board.getPiece(endPosition)){
-                moves.add(new ChessMove(position, endPosition, piece.getPieceType()));
+                moves.add(new ChessMove(position, endPosition, null));
             } else if (piece.getTeamColor() == board.getPiece(endPosition).getTeamColor()) {
                 break;
             } else {
-                moves.add(new ChessMove(position, endPosition, piece.getPieceType()));
+                moves.add(new ChessMove(position, endPosition, null));
                 break;
             }
         }
