@@ -15,34 +15,34 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
 
         ChessPiece piece = board.getPiece(position);
         if(ChessGame.TeamColor.WHITE == piece.getTeamColor()){
-            if(2 == j){ //double move at start
-                ChessPosition endPosition = new ChessPosition(j+2, i);
-                if(null == board.getPiece(endPosition)){
-                    moves.add(new ChessMove(position, endPosition, null));
-                }
-            }
             ChessPosition endPosition = new ChessPosition(j+1, i);
             if(null == board.getPiece(endPosition)){
                 if(8 == endPosition.getRow()){ //promotion move
                     addPromotionMoves(position, endPosition, moves);
-                } else {
+                } else { //normal move
                     moves.add(new ChessMove(position, endPosition, null));
+                }
+                if(2 == j){ //double move at start
+                    endPosition = new ChessPosition(j+2, i);
+                    if(null == board.getPiece(endPosition)){
+                        moves.add(new ChessMove(position, endPosition, null));
+                    }
                 }
             }
         }
         if(ChessGame.TeamColor.BLACK == piece.getTeamColor()){
-            if(7 == j){ //double move at start
-                ChessPosition endPosition = new ChessPosition(j-2, i);
-                if(null == board.getPiece(endPosition)){
-                    moves.add(new ChessMove(position, endPosition, null));
-                }
-            }
             ChessPosition endPosition = new ChessPosition(j-1, i);
             if(null == board.getPiece(endPosition)){
                 if(1 == endPosition.getRow()){ //promotion move
                     addPromotionMoves(position, endPosition, moves);
-                } else {
+                } else { //normal move
                     moves.add(new ChessMove(position, endPosition, null));
+                }
+                if(7 == j){ //double move at start
+                    endPosition = new ChessPosition(j-2, i);
+                    if(null == board.getPiece(endPosition)){
+                        moves.add(new ChessMove(position, endPosition, null));
+                    }
                 }
             }
         }
