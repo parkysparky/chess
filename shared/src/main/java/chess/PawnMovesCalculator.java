@@ -32,19 +32,23 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
                 }
             }
             endPosition = new ChessPosition(j+1, i-1); //capture left
-            if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
-                if(8 == endPosition.getRow()){ //promotion capture
-                    addPromotionMoves(position, endPosition, moves);
-                } else { //normal capture
-                    moves.add(new ChessMove(position, endPosition, null));
+            if (board.getPiece(endPosition) != null) {
+                if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
+                    if(8 == endPosition.getRow()){ //promotion capture
+                        addPromotionMoves(position, endPosition, moves);
+                    } else { //normal capture
+                        moves.add(new ChessMove(position, endPosition, null));
+                    }
                 }
             }
             endPosition = new ChessPosition(j+1, i+1); //capture right
-            if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
-                if(8 == endPosition.getRow()){ //promotion capture
-                    addPromotionMoves(position, endPosition, moves);
-                } else { //normal capture
-                    moves.add(new ChessMove(position, endPosition, null));
+            if (board.getPiece(endPosition) != null) {
+                if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
+                    if(8 == endPosition.getRow()){ //promotion capture
+                        addPromotionMoves(position, endPosition, moves);
+                    } else { //normal capture
+                        moves.add(new ChessMove(position, endPosition, null));
+                    }
                 }
             }
         }
@@ -59,6 +63,26 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
                 if(7 == j){ //double move at start
                     endPosition = new ChessPosition(j-2, i);
                     if(null == board.getPiece(endPosition)){
+                        moves.add(new ChessMove(position, endPosition, null));
+                    }
+                }
+            }
+            endPosition = new ChessPosition(j-1, i-1); //capture left
+            if (board.getPiece(endPosition) != null) {
+                if(ChessGame.TeamColor.WHITE == board.getPiece(endPosition).getTeamColor()){
+                    if(8 == endPosition.getRow()){ //promotion capture
+                        addPromotionMoves(position, endPosition, moves);
+                    } else { //normal capture
+                        moves.add(new ChessMove(position, endPosition, null));
+                    }
+                }
+            }
+            endPosition = new ChessPosition(j-1, i+1); //capture right
+            if (board.getPiece(endPosition) != null) {
+                if(ChessGame.TeamColor.WHITE == board.getPiece(endPosition).getTeamColor()){
+                    if(8 == endPosition.getRow()){ //promotion capture
+                        addPromotionMoves(position, endPosition, moves);
+                    } else { //normal capture
                         moves.add(new ChessMove(position, endPosition, null));
                     }
                 }
