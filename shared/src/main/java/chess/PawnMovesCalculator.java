@@ -17,8 +17,8 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
 
         ChessPiece piece = board.getPiece(position);
         if(ChessGame.TeamColor.WHITE == piece.getTeamColor()){
-            ChessPosition endPosition = new ChessPosition(j+1, i);
-            if(null == board.getPiece(endPosition)){ //vertical movement
+            ChessPosition endPosition = new ChessPosition(j+1, i); //vertical movement
+            if(null == board.getPiece(endPosition)){
                 if(8 == endPosition.getRow()){ //promotion move
                     addPromotionMoves(position, endPosition, moves);
                 } else { //normal move
@@ -29,6 +29,22 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
                     if(null == board.getPiece(endPosition)){
                         moves.add(new ChessMove(position, endPosition, null));
                     }
+                }
+            }
+            endPosition = new ChessPosition(j+1, i-1); //capture left
+            if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
+                if(8 == endPosition.getRow()){ //promotion capture
+                    addPromotionMoves(position, endPosition, moves);
+                } else { //normal capture
+                    moves.add(new ChessMove(position, endPosition, null));
+                }
+            }
+            endPosition = new ChessPosition(j+1, i+1); //capture right
+            if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
+                if(8 == endPosition.getRow()){ //promotion capture
+                    addPromotionMoves(position, endPosition, moves);
+                } else { //normal capture
+                    moves.add(new ChessMove(position, endPosition, null));
                 }
             }
         }
