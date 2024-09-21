@@ -10,13 +10,15 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
 
         Collection<ChessMove> moves = new ArrayList<>();
 
+        //TODO add captures
+
         int i = position.getColumn();
         int j = position.getRow();
 
         ChessPiece piece = board.getPiece(position);
         if(ChessGame.TeamColor.WHITE == piece.getTeamColor()){
             ChessPosition endPosition = new ChessPosition(j+1, i);
-            if(null == board.getPiece(endPosition)){
+            if(null == board.getPiece(endPosition)){ //vertical movement
                 if(8 == endPosition.getRow()){ //promotion move
                     addPromotionMoves(position, endPosition, moves);
                 } else { //normal move
@@ -32,7 +34,7 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
         }
         if(ChessGame.TeamColor.BLACK == piece.getTeamColor()){
             ChessPosition endPosition = new ChessPosition(j-1, i);
-            if(null == board.getPiece(endPosition)){
+            if(null == board.getPiece(endPosition)){ //vertical movement
                 if(1 == endPosition.getRow()){ //promotion move
                     addPromotionMoves(position, endPosition, moves);
                 } else { //normal move
