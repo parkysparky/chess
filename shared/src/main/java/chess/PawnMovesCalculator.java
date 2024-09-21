@@ -31,23 +31,27 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
                     }
                 }
             }
-            endPosition = new ChessPosition(j+1, i-1); //capture left
-            if (board.getPiece(endPosition) != null) {
-                if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
-                    if(8 == endPosition.getRow()){ //promotion capture
-                        addPromotionMoves(position, endPosition, moves);
-                    } else { //normal capture
-                        moves.add(new ChessMove(position, endPosition, null));
+            if (i > 1) {//if not on leftmost square
+                endPosition = new ChessPosition(j+1, i-1); //capture left
+                if (board.getPiece(endPosition) != null) {
+                    if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
+                        if(8 == endPosition.getRow()){ //promotion capture
+                            addPromotionMoves(position, endPosition, moves);
+                        } else { //normal capture
+                            moves.add(new ChessMove(position, endPosition, null));
+                        }
                     }
                 }
             }
-            endPosition = new ChessPosition(j+1, i+1); //capture right
-            if (board.getPiece(endPosition) != null) {
-                if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
-                    if(8 == endPosition.getRow()){ //promotion capture
-                        addPromotionMoves(position, endPosition, moves);
-                    } else { //normal capture
-                        moves.add(new ChessMove(position, endPosition, null));
+            if (i < 8) {
+                endPosition = new ChessPosition(j+1, i+1); //capture right
+                if (board.getPiece(endPosition) != null) {
+                    if(ChessGame.TeamColor.BLACK == board.getPiece(endPosition).getTeamColor()){
+                        if(8 == endPosition.getRow()){ //promotion capture
+                            addPromotionMoves(position, endPosition, moves);
+                        } else { //normal capture
+                            moves.add(new ChessMove(position, endPosition, null));
+                        }
                     }
                 }
             }
@@ -67,23 +71,27 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
                     }
                 }
             }
-            endPosition = new ChessPosition(j-1, i-1); //capture left
-            if (board.getPiece(endPosition) != null) {
-                if(ChessGame.TeamColor.WHITE == board.getPiece(endPosition).getTeamColor()){
-                    if(1 == endPosition.getRow()){ //promotion capture
-                        addPromotionMoves(position, endPosition, moves);
-                    } else { //normal capture
-                        moves.add(new ChessMove(position, endPosition, null));
+            if (i > 1) {
+                endPosition = new ChessPosition(j-1, i-1); //capture left
+                if (board.getPiece(endPosition) != null) {
+                    if(ChessGame.TeamColor.WHITE == board.getPiece(endPosition).getTeamColor()){
+                        if(1 == endPosition.getRow()){ //promotion capture
+                            addPromotionMoves(position, endPosition, moves);
+                        } else { //normal capture
+                            moves.add(new ChessMove(position, endPosition, null));
+                        }
                     }
                 }
             }
-            endPosition = new ChessPosition(j-1, i+1); //capture right
-            if (board.getPiece(endPosition) != null) {
-                if(ChessGame.TeamColor.WHITE == board.getPiece(endPosition).getTeamColor()){
-                    if(1 == endPosition.getRow()){ //promotion capture
-                        addPromotionMoves(position, endPosition, moves);
-                    } else { //normal capture
-                        moves.add(new ChessMove(position, endPosition, null));
+            if (i < 8) {
+                endPosition = new ChessPosition(j-1, i+1); //capture right
+                if (board.getPiece(endPosition) != null) {
+                    if(ChessGame.TeamColor.WHITE == board.getPiece(endPosition).getTeamColor()){
+                        if(1 == endPosition.getRow()){ //promotion capture
+                            addPromotionMoves(position, endPosition, moves);
+                        } else { //normal capture
+                            moves.add(new ChessMove(position, endPosition, null));
+                        }
                     }
                 }
             }
