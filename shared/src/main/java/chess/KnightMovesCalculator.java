@@ -10,13 +10,10 @@ public class KnightMovesCalculator implements PieceMovesCalculator {
 
         Collection<ChessMove> moves = new HashSet<>();
 
-        ChessPiece self = board.getPiece(position);
-        ChessPosition endPosition = position;
+        int j = position.getColumn();
+        int i = position.getRow();
 
-        int i = position.getColumn();
-        int j = position.getRow();
-
-        endPosition = new ChessPosition(i + 1, j + 2);
+        ChessPosition endPosition = new ChessPosition(i + 1, j + 2);
         if(isValid(board, position, endPosition)){
             moves.add(new ChessMove(position, endPosition, null));
         }
