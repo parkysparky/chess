@@ -70,7 +70,7 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
             endPosition = new ChessPosition(j-1, i-1); //capture left
             if (board.getPiece(endPosition) != null) {
                 if(ChessGame.TeamColor.WHITE == board.getPiece(endPosition).getTeamColor()){
-                    if(8 == endPosition.getRow()){ //promotion capture
+                    if(1 == endPosition.getRow()){ //promotion capture
                         addPromotionMoves(position, endPosition, moves);
                     } else { //normal capture
                         moves.add(new ChessMove(position, endPosition, null));
@@ -80,7 +80,7 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
             endPosition = new ChessPosition(j-1, i+1); //capture right
             if (board.getPiece(endPosition) != null) {
                 if(ChessGame.TeamColor.WHITE == board.getPiece(endPosition).getTeamColor()){
-                    if(8 == endPosition.getRow()){ //promotion capture
+                    if(1 == endPosition.getRow()){ //promotion capture
                         addPromotionMoves(position, endPosition, moves);
                     } else { //normal capture
                         moves.add(new ChessMove(position, endPosition, null));
@@ -88,7 +88,6 @@ public class PawnMovesCalculator implements PieceMovesCalculator {
                 }
             }
         }
-
 
         return moves;
     }
