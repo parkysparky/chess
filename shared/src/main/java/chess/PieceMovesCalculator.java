@@ -1,6 +1,6 @@
 package chess;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Collection;
 
 public interface PieceMovesCalculator {

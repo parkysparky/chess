@@ -69,4 +69,6 @@ public class KnightMovesCalculator implements PieceMovesCalculator {
         }
         return true;
     }
+
+
 }
