@@ -125,7 +125,7 @@ public class ChessGame {
 
         //check if real move
         Collection<ChessMove> validMovesList = validMoves(startPosition);
-        if (!validMovesList.stream().anyMatch(move::equals)) {   //TEST: negate the bool and put exception in if block and move below
+        if (!validMovesList.stream().anyMatch(move::equals)) {
             throw new InvalidMoveException("Illegal Move");
         }
         chessBoard.removePiece(startPosition);
