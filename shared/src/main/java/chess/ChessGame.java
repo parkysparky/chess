@@ -89,7 +89,7 @@ public class ChessGame {
     }
 
     ChessPiece testMove(ChessMove move){
-        ChessPiece capturedPiece = chessBoard.getPiece(move.getEndPosition()); //null problems?
+        ChessPiece capturedPiece = chessBoard.getPiece(move.getEndPosition());
         ChessPiece movingPiece = chessBoard.getPiece(move.getStartPosition());
         chessBoard.removePiece(move.getStartPosition());
         chessBoard.addPiece(move.getEndPosition(), movingPiece);
