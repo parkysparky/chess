@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 /**
@@ -95,7 +96,32 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+        //iterate over board
+            //find the king
+            //find all oponentmoves
+        ChessPosition kingPosition = new ChessPosition(1, 1); //may bug out
+        Collection<ChessMove> oponentMoves = new HashSet<>();
+        boolean inCheck = false;
+        for(int i = 1; i <= 8; i++) {
+            for(int j = 1; j <= 8; j++) {
+                if((null != chessBoard.getPiece(new ChessPosition(j, i))) &&
+                        (ChessPiece.PieceType.KING == chessBoard.getPiece(new ChessPosition(j, i)).getPieceType()) &&
+                        (teamColor == chessBoard.getPiece(new ChessPosition(j, i)).getTeamColor()) ) {
+                    kingPosition = new ChessPosition(j, i);
+                }
+                if((null != chessBoard.getPiece(new ChessPosition(j, i))) &&
+                        (teamColor != chessBoard.getPiece(new ChessPosition(j, i)).getTeamColor()) ) {
+                    oponentMoves.addAll(chessBoard.getPiece(new ChessPosition(j, i)).pieceMoves(chessBoard, new ChessPosition(j, i)));
+                }
+            }
+        }
+        for(ChessMove move : oponentMoves) {
+            if(kingPosition.equals(move.getEndPosition())){
+                inCheck = true;
+                break;
+            }
+        }
+        return inCheck;
     }
 
     /**
