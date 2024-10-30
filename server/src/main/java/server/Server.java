@@ -1,5 +1,6 @@
 package server;
 
+import memorydatabase.Database;
 import spark.*;
 
 public class Server {
@@ -8,6 +9,8 @@ public class Server {
         Spark.port(desiredPort);
 
         Spark.staticFiles.location("web");
+
+        Database db = new Database();
 
         // Register your endpoints and handle exceptions here.
 
